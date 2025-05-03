@@ -3,6 +3,9 @@ import React, { useEffect } from 'react';
 import * as Sentry from '@sentry/react';
 import i18n from '../i18n';
 import 'dotenv/config';
+import { Provider } from 'react-redux';
+import { store } from '@/stores/store';
+import ThemeProvider from '@/theme/theme-provider';
 
 Sentry.init({
   dsn: process.env.SENTRY_DSN_KEY,
@@ -20,7 +23,16 @@ function MyApp({ Component, pageProps }) {
   }, []);
 
   // eslint-disable-next-line react/jsx-props-no-spreading
-  return <Component {...pageProps} />;
+  // return <Component {...pageProps} />;
+
+  return (
+    <Provider store={store}>
+      <ThemeProvider>
+        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </Provider>
+  );
 }
 
 export default MyApp;
