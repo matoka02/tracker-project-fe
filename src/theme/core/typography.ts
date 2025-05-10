@@ -1,6 +1,6 @@
 import type { TypographyVariantsOptions as MuiTypographyVariantsOptions } from '@mui/material/styles';
 import { Inter, Poppins } from 'next/font/google';
-import localFont from 'next/font/local';
+// import localFont from 'next/font/local';
 
 import { pxToRem, responsiveFontSizes, setFont } from '../styles';
 
