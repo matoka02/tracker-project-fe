@@ -1,7 +1,15 @@
 import type { Theme } from '@mui/material/styles';
 import { extendTheme } from '@mui/material/styles';
 
-import { typography, components, colorSchemes, customShadows, shadows } from './core';
+import {
+  typography,
+  components,
+  colorSchemes,
+  customShadows,
+  shadows,
+  lightVariables,
+  darkVariables,
+} from './core';
 
 // ----------------------------------------------------------------------
 
@@ -57,12 +65,13 @@ export function createTheme2(options: CreateThemeOptions = {}): Theme {
     typography,
     cssVarPrefix: '',
     shouldSkipGeneratingVar,
+    variable: mode === 'light' ? lightVariables : darkVariables,
   };
 
   // const theme = extendTheme(initialTheme);
   // console.log(theme);
   const theme = baseTheme ? extendTheme(initialTheme, baseTheme) : extendTheme(initialTheme);
-  // console.log('CustomTheme:', theme.variable.buttonBg);
+  // console.log('CustomTheme:', theme.palette.variable.primaryBg);
   return theme;
 }
 

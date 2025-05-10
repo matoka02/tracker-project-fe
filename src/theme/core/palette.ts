@@ -47,6 +47,12 @@ declare module '@mui/material/styles' {
     transitions: Theme['transitions'];
     variable: { [key: string]: string };
   }
+  interface Palette {
+    variable: { [key: string]: string };
+  }
+  interface PaletteOptions {
+    variable?: { [key: string]: string };
+  }
 }
 
 declare module '@mui/material' {

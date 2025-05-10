@@ -1,9 +1,10 @@
 import '../styles/globals.css';
 import React, { useEffect } from 'react';
 import * as Sentry from '@sentry/react';
+import { Provider } from 'react-redux';
 import i18n from '../i18n';
 import 'dotenv/config';
-import { Provider } from 'react-redux';
+
 import { store } from '@/stores/store';
 import ThemeProvider from '@/theme/theme-provider';
 
