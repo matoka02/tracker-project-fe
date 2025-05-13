@@ -2,6 +2,7 @@ import { Box, styled } from '@mui/material';
 import React, { useEffect } from 'react';
 
 import { useAppDispatch, useAppSelector } from '@/stores/hooks';
+import { getAllTasks } from '@/stores/task/taskOperations';
 
 // import { getAllTasks } from '@/stores/tasks/tasksOperations';
 // import { fetchOwnReviews } from '@/stores/reviews/reviewsOperations';
@@ -43,7 +44,7 @@ interface LayoutProps {
 }
 
 function Layout({ children }: LayoutProps): React.ReactElement {
-  // const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
   // const token = useAppSelector((state) => state.auth.token);
 
   // useEffect(() => {
@@ -52,6 +53,10 @@ function Layout({ children }: LayoutProps): React.ReactElement {
   //     dispatch(fetchOwnReviews());
   //   }
   // }, [dispatch, token]);
+
+  useEffect(() => {
+    dispatch(getAllTasks());
+  }, [dispatch]);
 
   return (
     <Container>
