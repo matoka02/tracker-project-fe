@@ -58,33 +58,33 @@ const CalendarContainer = styled(Box)(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-function StatisticsPage():React.ReactElement {
-const router =useRouter();
-const dispatch=useAppDispatch();
+function StatisticsPage(): React.ReactElement {
+  const router = useRouter();
+  const dispatch = useAppDispatch();
 
-const today=useAppSelector(selectActiveDate);
-const periodType=useAppSelector(selectPeriodType);
+  const today = useAppSelector(selectActiveDate);
+  const periodType = useAppSelector(selectPeriodType);
 
-const {date:dateParam}=router.query;
-const normalizedDate=typeof dateParam ==='string'?dateParam.split('/')[1]:'';
+  const { date: dateParam } = router.query;
+  const normalizedDate = typeof dateParam === 'string' ? dateParam.split('/')[1] : '';
 
   const theme = useTheme();
 
-useEffect(()=>{
-  if (periodType==='month') dispatch(setPeriodType('day'))
+  useEffect(() => {
+    if (periodType === 'month') dispatch(setPeriodType('day'));
 
-  try {
-    if (normalizedDate) {
-      const date=format(parseISO(normalizedDate),'yyyy-MM-dd');
-      if (today!==date) {
-        dispatch(setSelectedDate(date));
-        dispatch(setActiveDate(date))
+    try {
+      if (normalizedDate) {
+        const date = format(parseISO(normalizedDate), 'yyyy-MM-dd');
+        if (today !== date) {
+          dispatch(setSelectedDate(date));
+          dispatch(setActiveDate(date));
+        }
       }
+    } catch (error) {
+      router.push(`/statistics/${periodType}/${today}`);
     }
-  } catch (error) {
-    router.push( `/statistics/${periodType}/${today}`)
-  }
-},[dispatch, normalizedDate, periodType, router, today])
+  }, [dispatch, normalizedDate, periodType, router, today]);
 
   return (
     <PageWrapper>
@@ -99,7 +99,6 @@ useEffect(()=>{
       </StatisticWrapper>
     </PageWrapper>
   );
-
 }
 
 export default StatisticsPage;
