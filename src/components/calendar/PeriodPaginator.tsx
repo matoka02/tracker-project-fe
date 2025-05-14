@@ -14,7 +14,7 @@ import { fetchTasks } from '@/stores/task/taskOperations';
 
 // Stub for authorization slice
 const useAuthStub = () => ({
-    createdAt: format(new Date(), 'yyyy-MM-dd'), // current date as placeholder
+  createdAt: format(new Date(), 'yyyy-MM-dd'), // current date as placeholder
 });
 
 const DatePickerWrapper = styled('div')(({ theme }) => ({
@@ -167,23 +167,19 @@ function PeriodPaginator() {
     prevDateRef.current = parse(currentDate, 'yyyy-MM-dd', new Date());
   }, [currentDate]);
 
-  const handleDateChange = (value: Date|null) => {
+  const handleDateChange = (value: Date | null) => {
     if (value) {
-    router.push(`/calendar/${periodType}/${format(value, 'yyyy-MM-dd')}`);
-  }
+      router.push(`/calendar/${periodType}/${format(value, 'yyyy-MM-dd')}`);
+    }
   };
 
   const handlePrevPeriod = () => {
-    const newDate = periodType === 'month'
-      ? subMonths(date, 1)
-      : subDays(date, 1);
+    const newDate = periodType === 'month' ? subMonths(date, 1) : subDays(date, 1);
     router.push(`/calendar/${periodType}/${format(newDate, 'yyyy-MM-dd')}`);
   };
 
   const handleNextPeriod = () => {
-    const newDate = periodType === 'month'
-      ? addMonths(date, 1)
-      : addDays(date, 1);
+    const newDate = periodType === 'month' ? addMonths(date, 1) : addDays(date, 1);
     router.push(`/calendar/${periodType}/${format(newDate, 'yyyy-MM-dd')}`);
   };
 
@@ -202,10 +198,7 @@ function PeriodPaginator() {
         />
       </DatePickerWrapper>
       <div>
-        <Controls
-          disabled={isDisable}
-          onClick={handlePrevPeriod}
-        >
+        <Controls disabled={isDisable} onClick={handlePrevPeriod}>
           <ArrowBackIosNew fontSize="small" />
         </Controls>
         <Controls onClick={handleNextPeriod}>
@@ -216,4 +209,4 @@ function PeriodPaginator() {
   );
 }
 
-export default PeriodPaginator
+export default PeriodPaginator;
