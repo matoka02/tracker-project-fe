@@ -120,7 +120,7 @@ CustomTooltip.defaultProps = {
 function StatisticsComp(): React.ReactElement {
   // const muiTheme = useTheme();
   // const theme = useAppSelector(selectCurrentTheme);
-  const theme = useTheme()
+  const theme = useTheme();
   const toDay = useAppSelector(selectSelectedDate);
   const tasks = useAppSelector(selectTasks);
 
