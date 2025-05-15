@@ -5,6 +5,19 @@ import { INewTask, ITask } from '../types';
 
 axios.defaults.baseURL = 'https://tracker-3sdo.onrender.com/api/v1';
 
+// Stub for authorization
+axios.interceptors.request.use((config) => {
+  const token = localStorage.getItem('token');
+  if (token) {
+    const newConfig = { ...config };
+    const headers = new axios.AxiosHeaders(newConfig.headers);
+    headers.set('Authorization', `Bearer ${token}`);
+    newConfig.headers = headers;
+    return newConfig;
+  }
+  return config;
+});
+
 export const getAllTasks = createAsyncThunk<
   ITask[],
   void
