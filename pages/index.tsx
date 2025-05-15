@@ -1,3 +1,5 @@
+import Layout from '@/components/Layout';
+import ThemeToggler from '@/theme/theme-toggler';
 import Head from 'next/head';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
@@ -21,10 +23,13 @@ export default function Home() {
           content="Frontend SSR template is used for bootstrapping a project."
         />
       </Head>
-      <button type="button" onClick={onClick}>
-        {t('click')}
-      </button>
-      <h1>Frontend SSR template</h1>
+      <Layout>
+        <ThemeToggler />
+        <button type="button" onClick={onClick}>
+          {t('click')}
+        </button>
+        <h1>Frontend SSR template</h1>
+      </Layout>
     </div>
   );
 }
