@@ -1,5 +1,5 @@
 import { ArrowBackIosNew, ArrowForwardIos } from '@mui/icons-material';
-import { Button, styled, useTheme } from '@mui/material';
+import { Box, Button, styled, useTheme } from '@mui/material';
 import { addDays, addMonths, format, parse, subDays, subMonths } from 'date-fns';
 import { useRouter } from 'next/router';
 import React, { useEffect, useRef } from 'react';
@@ -17,7 +17,7 @@ const useAuthStub = () => ({
   createdAt: format(new Date(), 'yyyy-MM-dd'), // current date as placeholder
 });
 
-const DatePickerWrapper = styled('div')(({ theme }) => ({
+const DatePickerWrapper = styled(Box)(({ theme }) => ({
   fontFamily: 'Inter, sans-serif',
   marginRight: '8px',
   '& .react-datepicker__today-button': {
@@ -98,7 +98,7 @@ const DatePickerWrapper = styled('div')(({ theme }) => ({
   },
 }));
 
-const ControlWrapper = styled('div')(({ theme }) => ({
+const ControlWrapper = styled(Box)(({ theme }) => ({
   display: 'flex',
   justifyContent: 'space-between',
   [theme.breakpoints.down('sm')]: {
@@ -117,12 +117,12 @@ const Controls = styled(Button)(({ theme }) => ({
   [theme.breakpoints.down('md')]: {
     height: '30px',
   },
-  backgroundColor: theme.variable?.CalendarLinkColor || '#E3F3FF',
-  border: `1px solid ${theme.variable?.borderColorWeekCalendar || '#E3F3FF'}`,
-  color: theme.variable?.calendarTextColor || '#343434',
+  backgroundColor: theme.palette.variable.CalendarLinkColor || '#E3F3FF',
+  border: `1px solid ${theme.palette.variable?.borderColorWeekCalendar || '#E3F3FF'}`,
+  color: theme.palette.variable?.calendarTextColor || '#343434',
   '&:disabled': {
-    backgroundColor: theme.variable?.mainBackgroundColor || '#FFFFFF',
-    color: theme.variable?.activeArrowColor || '#DCE3E5',
+    backgroundColor: theme.palette.variable?.mainBackgroundColor || '#FFFFFF',
+    color: theme.palette.variable?.activeArrowColor || '#DCE3E5',
   },
   [theme.breakpoints.up('md')]: {
     width: '38px',

@@ -1,4 +1,4 @@
-import { Box, List, ListItem, Typography, useTheme } from '@mui/material';
+import { Box, List, ListItem, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import React from 'react';
 
@@ -29,7 +29,7 @@ const InfoList = styled(List)({
 // });
 
 const InfoDay = styled(Typography)(({ theme }) => ({
-  color: theme.variable?.titleAvatar,
+  color: theme.palette.variable.titleAvatar,
   fontSize: '14px',
   lineHeight: '18px',
   fontWeight: 400,
@@ -50,7 +50,7 @@ const InfoDay = styled(Typography)(({ theme }) => ({
 }));
 
 const InfoMonth = styled(Typography)(({ theme }) => ({
-  color: theme.variable?.titleAvatar,
+  color: theme.palette.variable.titleAvatar,
   fontSize: '14px',
   lineHeight: '18px',
   fontWeight: 400,
@@ -73,20 +73,14 @@ const InfoMonth = styled(Typography)(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 function StatisticsInfo(): React.ReactElement {
-  const theme = useTheme();
-
   return (
     <InfoBox>
       <InfoList>
         <ListItem>
-          <InfoDay variant="body1" theme={theme}>
-            By Day
-          </InfoDay>
+          <InfoDay variant="body1">By Day</InfoDay>
         </ListItem>
         <ListItem>
-          <InfoMonth variant="body1" theme={theme}>
-            By Month
-          </InfoMonth>
+          <InfoMonth variant="body1">By Month</InfoMonth>
         </ListItem>
       </InfoList>
     </InfoBox>

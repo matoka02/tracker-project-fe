@@ -10,6 +10,7 @@ import StatisticsInfo from '@/components/statistics/StatisticsInfo';
 import { selectActiveDate, selectPeriodType } from '@/stores/date/dateSelectors';
 import { setActiveDate, setPeriodType, setSelectedDate } from '@/stores/date/dateSlice';
 import { useAppDispatch, useAppSelector } from '@/stores/hooks';
+import Layout from '@/components/Layout';
 
 // ----------------------------------------------------------------------
 
@@ -24,7 +25,7 @@ const PageWrapper = styled(Box)(({ theme }) => ({
 }));
 
 const StatisticWrapper = styled(Box)(({ theme }) => ({
-  backgroundColor: theme.palette.variable.secondaryBg || '#F7F6F9',
+  backgroundColor: theme.palette.variable.secondaryBg,
   borderRadius: '16px',
   padding: '28px 14px 135px 14px',
   [theme.breakpoints.up('md')]: {
@@ -87,17 +88,19 @@ function StatisticsPage(): React.ReactElement {
   }, [dispatch, normalizedDate, periodType, router, today]);
 
   return (
-    <PageWrapper>
-      <StatisticWrapper>
-        <PaginationContainer>
-          <CalendarContainer>
-            <PeriodPaginator />
-          </CalendarContainer>
-          <StatisticsInfo />
-        </PaginationContainer>
-        <StatisticsComp />
-      </StatisticWrapper>
-    </PageWrapper>
+    <Layout>
+      <PageWrapper>
+        <StatisticWrapper>
+          <PaginationContainer>
+            <CalendarContainer>
+              <PeriodPaginator />
+            </CalendarContainer>
+            <StatisticsInfo />
+          </PaginationContainer>
+          <StatisticsComp />
+        </StatisticWrapper>
+      </PageWrapper>
+    </Layout>
   );
 }
 
