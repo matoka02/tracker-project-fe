@@ -1,5 +1,5 @@
 import { ArrowBackIosNew, ArrowForwardIos } from '@mui/icons-material';
-import { Box, Button, styled, useTheme } from '@mui/material';
+import { Box, Button, styled } from '@mui/material';
 import { addDays, addMonths, format, parse, subDays, subMonths } from 'date-fns';
 import { useRouter } from 'next/router';
 import React, { useEffect, useRef } from 'react';
@@ -61,6 +61,7 @@ const DatePickerWrapper = styled(Box)(({ theme }) => ({
   '& .react-datepicker__current-month': {
     fontSize: '16px',
     marginBottom: '18px',
+    color: 'white',
   },
   '& .react-datepicker__day-name, & .react-datepicker__day.react-datepicker__day--outside-month': {
     color: 'rgba(255, 255, 255, 0.5)',
@@ -68,9 +69,6 @@ const DatePickerWrapper = styled(Box)(({ theme }) => ({
   '& .react-datepicker__navigation-icon::before': {
     borderColor: 'white',
   },
-  // '& .react-datepicker__current-month': {
-  //   color: 'white',
-  // },
   '& .react-datepicker__week:last-of-type': {
     marginBottom: 0,
   },
@@ -117,12 +115,12 @@ const Controls = styled(Button)(({ theme }) => ({
   [theme.breakpoints.down('md')]: {
     height: '30px',
   },
-  backgroundColor: theme.palette.variable.CalendarLinkColor || '#E3F3FF',
-  border: `1px solid ${theme.palette.variable?.borderColorWeekCalendar || '#E3F3FF'}`,
-  color: theme.palette.variable?.calendarTextColor || '#343434',
+  backgroundColor: theme.palette.variable.CalendarLinkColor,
+  border: `1px solid ${theme.palette.variable.borderColorWeekCalendar}`,
+  color: theme.palette.variable.calendarTextColor,
   '&:disabled': {
-    backgroundColor: theme.palette.variable?.mainBackgroundColor || '#FFFFFF',
-    color: theme.palette.variable?.activeArrowColor || '#DCE3E5',
+    backgroundColor: theme.palette.variable.mainBackgroundColor,
+    color: theme.palette.variable.activeArrowColor,
   },
   [theme.breakpoints.up('md')]: {
     width: '38px',
@@ -142,7 +140,6 @@ const Controls = styled(Button)(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 function PeriodPaginator() {
-  const theme = useTheme();
   const dispatch = useAppDispatch();
   const router = useRouter();
 
@@ -197,14 +194,14 @@ function PeriodPaginator() {
           minDate={new Date(createdAt)}
         />
       </DatePickerWrapper>
-      <div>
+      <Box>
         <Controls disabled={isDisable} onClick={handlePrevPeriod}>
           <ArrowBackIosNew fontSize="small" />
         </Controls>
         <Controls onClick={handleNextPeriod}>
           <ArrowForwardIos fontSize="small" />
         </Controls>
-      </div>
+      </Box>
     </ControlWrapper>
   );
 }

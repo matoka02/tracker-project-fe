@@ -18,7 +18,7 @@ import { selectTasks } from '@/stores/task/taskSelectors';
 // ----------------------------------------------------------------------
 
 const Container = styled(Box)(({ theme }) => ({
-  border: `1px solid ${theme.variable?.borderColor || '#E3F3FF'}`,
+  border: `1px solid ${theme.palette.variable.borderColor}`,
   margin: '0 auto',
   borderRadius: '20px',
   padding: '40px 14px',
@@ -55,14 +55,14 @@ const Wrapper = styled(Box)(({ theme }) => ({
 }));
 
 const LabelContainer = styled(Box)(({ theme }) => ({
-  color: theme.variable?.text,
+  color: theme.palette.variable.text,
   display: 'flex',
   flexDirection: 'column',
   gap: '4px',
 }));
 
 const LabelTitle = styled(Typography)(({ theme }) => ({
-  color: theme.variable?.activeTextColorBtn,
+  color: theme.palette.variable.activeTextColorBtn,
   fontFamily: 'InterMedium',
   fontSize: '16px',
   fontStyle: 'italic',
@@ -71,7 +71,7 @@ const LabelTitle = styled(Typography)(({ theme }) => ({
 }));
 
 const Title = styled(Typography)(({ theme }) => ({
-  color: theme.variable?.titleAvatar,
+  color: theme.palette.variable.titleAvatar,
   fontSize: '14px',
   fontWeight: 600,
   lineHeight: '150%',
@@ -211,7 +211,7 @@ function StatisticsComp(): React.ReactElement {
               vertical={false}
               stroke={
                 theme.colorSchemes.light
-                  ? theme.variable?.borderColor || '#E3F3FF'
+                  ? theme.palette.variable.borderColor || '#E3F3FF'
                   : 'rgba(227, 243, 255, 0.15)'
               }
             />

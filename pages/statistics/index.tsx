@@ -1,5 +1,5 @@
 import { Box } from '@mui/material';
-import { styled, useTheme } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import { format, parseISO } from 'date-fns';
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
@@ -69,8 +69,6 @@ function StatisticsPage(): React.ReactElement {
   const { date: dateParam } = router.query;
   const normalizedDate = typeof dateParam === 'string' ? dateParam.split('/')[1] : '';
 
-  const theme = useTheme();
-
   useEffect(() => {
     if (periodType === 'month') dispatch(setPeriodType('day'));
 
@@ -82,6 +80,7 @@ function StatisticsPage(): React.ReactElement {
           dispatch(setActiveDate(date));
         }
       }
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       router.push(`/statistics/${periodType}/${today}`);
     }
