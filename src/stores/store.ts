@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 
+import { authReducer } from './auth/authSlice';
 import dateReducer from './date/dateSlice';
 import tasksReducer from './task/taskSlice';
 import themeReducer from './theme/themeSlice';
 
 export const store = configureStore({
   reducer: {
+    auth: authReducer,
     theme: themeReducer,
     date: dateReducer,
     tasks: tasksReducer,
